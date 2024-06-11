@@ -5,21 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reajuste Preço</title>
-    <link rel="stylesheet" href="overall_style.css">
+    <link rel="stylesheet" href="../public/assets/css/overall_style.css">
 </head>
 
 <body>
-    <?php
-    include_once("price.php");
-    $price_form = $_POST['preco'] ?? 1;
-    $percentage_form = $_POST['porcentagem'] ?? 25;
-
-    // if ($porcentagem == 0) {
-    //     echo "O porcentagem tem que ser diferente de 0!";
-    // } else {
-    //     $quociente = intdiv($preco, $divisor);
-    // }
-    ?>
     <main class="main">
         <section>
             <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post" id="form">
@@ -35,14 +24,7 @@
         </section>
         <section class="result">
             <?php
-            if (isset($_POST['preco'])) {
-                if (is_numeric($price_form) && is_numeric($percentage_form)) {
-                    $price = new Price($price_form, $percentage_form);
-                    $price->print_data();
-                }
-            } else {
-                echo "Esperando formulario...";
-            }
+            require_once("../model/request.php");
             ?>
         </section>
     </main>
